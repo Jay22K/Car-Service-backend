@@ -15,11 +15,11 @@ app.use(express.json());
 // Set Session and Passport
 const session = require('express-session');
 app.use(session({
-    secret:process.env.SESSION_SECREAT,
+    secret: process.env.SESSION_SECREAT,
     resave: false,
     saveUninitialized: true,
-    rolling: true, 
-    cookie: {maxAge: 24 * 60 * 60 * 1000},
+    rolling: true,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
     store: MongoStore.create({
         mongoUrl: process.env.DB_CONNECTION,
         ttl: 3600,
@@ -27,7 +27,7 @@ app.use(session({
 }));
 
 // Store User in locals
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.locals.user = req.session.user_id;
     next();
 });
@@ -46,13 +46,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Set Admin Routes
 const adminRoute = require("./routes/adminRoutes");
-app.use('/',adminRoute);
+app.use('/', adminRoute);
 
 // Set API Routes
 const apiRoute = require("./routes/apiRoutes");
 app.use('/api', apiRoute);
 
 // Set Port and Start Server
-app.listen(process.env.PORT,function(){
+app.listen(process.env.PORT || 3000, function () {
     console.log("Server is Running  on 8400");
 });
