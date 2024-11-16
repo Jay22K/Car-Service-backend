@@ -49,10 +49,11 @@ const adminRoute = require("./routes/adminRoutes");
 app.use('/', adminRoute);
 
 // Set API Routes
-const apiRoute = require("./routes/apiRoutes");
-app.use('/api', apiRoute);
+// const apiRoute = require("./routes/apiRoutes");
+// app.use('/api', apiRoute);
 
+const PORT = process.env.PORT || 3000;
 // Set Port and Start Server
-app.listen(process.env.PORT || 3000, function () {
-    console.log("Server is Running  on 8400");
+app.listen(PORT, function () {
+    console.log(`Server is Running  on port ${PORT}`);
 });

@@ -23,7 +23,7 @@ module.exports.VerifyAdmin = async (req, res) => {
     try {
         const password = sha256.x2(req.body.password);
         const email = req.body.email;
-        const AdminData = await Admin.findOne({ email: email, password: password });
+        const AdminData = await Admin.findOne({ email: email, password: req.body.password });
         if (AdminData) {
             req.session.user_id = AdminData._id;
             res.redirect('/dashboard');
@@ -43,8 +43,8 @@ module.exports.loadDashboard = async (req, res) => {
         const vehicleType = await VehicleType.find();
         const booking = await Booking.find();
         const users = await User.find();
-        const service = await Service.find();   
-        res.render('dashboard', { booking: booking, users: users, vehicleType: vehicleType, service: service, banner: banner});
+        const service = await Service.find();
+        res.render('dashboard', { booking: booking, users: users, vehicleType: vehicleType, service: service, banner: banner });
     } catch (error) {
         console.log(error.message);
     }

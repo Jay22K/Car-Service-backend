@@ -43,13 +43,13 @@ admin_route.get('/profile', auth.isLogin, AdminController.adminProfile);
 admin_route.post('/profile', upload.single('image'), AdminController.editProfile);
 admin_route.get('/change-password', auth.isLogin, AdminController.changePassword);
 admin_route.post('/change-password', auth.isLogin, AdminController.resetAdminPassword);
-admin_route.get('/users',auth.isLogin,AdminController.viewUsers);
-admin_route.post('/users/:id/toggle',AdminController.userStatus);
+admin_route.get('/users', auth.isLogin, AdminController.viewUsers);
+admin_route.post('/users/:id/toggle', AdminController.userStatus);
 admin_route.get('/logout', auth.isLogin, AdminController.adminLogout);
 
 // Currency Controller and Routes
 const CurrencyController = require("../controllers/CurrencyController");
-admin_route.get('/currency',auth.isLogin, CurrencyController.loadCurrency);
+admin_route.get('/currency', auth.isLogin, CurrencyController.loadCurrency);
 admin_route.post('/currency', CurrencyController.addCurrency);
 
 // Intro Controller and Routes
@@ -65,7 +65,7 @@ admin_route.get('/delete-intro', auth.isLogin, IntroController.deleteIntro);
 // Vehicle Type Controller and Routes
 const VehicleTypeController = require("../controllers/VehicleTypeController");
 admin_route.get('/add-vehicle-type', auth.isLogin, VehicleTypeController.loadVehicleType);
-admin_route.post('/add-vehicle-type', upload.single('image'),VehicleTypeController.addVehicleType);
+admin_route.post('/add-vehicle-type', upload.single('image'), VehicleTypeController.addVehicleType);
 admin_route.get('/view-vehicle-type', auth.isLogin, VehicleTypeController.viewVehicleType);
 admin_route.get('/edit-vehicle-type', auth.isLogin, VehicleTypeController.editVehicleType);
 admin_route.post('/edit-vehicle-type', upload.single('image'), VehicleTypeController.updateVehicleType);
@@ -90,20 +90,20 @@ admin_route.get('/delete-service', auth.isLogin, ServiceController.deleteService
 
 // Center Package
 const PackageController = require("../controllers/PackageController");
-admin_route.get('/add-package',auth.isLogin,PackageController.loadPackage);
-admin_route.post('/add-package',upload.any(),PackageController.addPackage);
-admin_route.get('/view-package',auth.isLogin,PackageController.viewPackage);
-admin_route.get('/edit-package', auth.isLogin,PackageController.editPackage);
-admin_route.post('/edit-package', upload.single('image'),PackageController.UpdatePackage);
+admin_route.get('/add-package', auth.isLogin, PackageController.loadPackage);
+admin_route.post('/add-package', upload.any(), PackageController.addPackage);
+admin_route.get('/view-package', auth.isLogin, PackageController.viewPackage);
+admin_route.get('/edit-package', auth.isLogin, PackageController.editPackage);
+admin_route.post('/edit-package', upload.single('image'), PackageController.UpdatePackage);
 admin_route.post('/package-is-active/:id/toggle', PackageController.activeStatus);
-admin_route.get('/delete-package',auth.isLogin,PackageController.deletepacakge);
+admin_route.get('/delete-package', auth.isLogin, PackageController.deletepacakge);
 
 // Package Gallery Images
-admin_route.get('/view-package-gallery',auth.isLogin,PackageController.viewGallery);
+admin_route.get('/view-package-gallery', auth.isLogin, PackageController.viewGallery);
 admin_route.get('/edit-image', auth.isLogin, PackageController.editGallery);
-admin_route.post('/edit-image',upload.single('image'),PackageController.replaceImg);
-admin_route.post('/view-package-gallery',upload.any(),PackageController.addNewImage);
-admin_route.get('/delete-image',auth.isLogin,PackageController.deleteImage);
+admin_route.post('/edit-image', upload.single('image'), PackageController.replaceImg);
+admin_route.post('/view-package-gallery', upload.any(), PackageController.addNewImage);
+admin_route.get('/delete-image', auth.isLogin, PackageController.deleteImage);
 
 // Banner Controller and Routes
 const BannerController = require("../controllers/BannerController");
@@ -136,24 +136,24 @@ admin_route.post('/time-slots', TimeSlotController.addTimeslot);
 
 // SMTP Controller and Routes
 const SMTPController = require("../controllers/SMTPController");
-admin_route.get('/smtp',auth.isLogin,SMTPController.smtpLoad);
-admin_route.post('/smtp',SMTPController.setSMTP);
+admin_route.get('/smtp', auth.isLogin, SMTPController.smtpLoad);
+admin_route.post('/smtp', SMTPController.setSMTP);
 
 // Page Controller and Routes
 const PageController = require("../controllers/PageController");
-admin_route.get('/page',auth.isLogin, PageController.pageLoad);
-admin_route.post('/page',auth.isLogin, PageController.addPages);
+admin_route.get('/page', auth.isLogin, PageController.pageLoad);
+admin_route.post('/page', auth.isLogin, PageController.addPages);
 
 // Payment Method Routes
 const PaymentGatewayController = require("../controllers/PaymentGatewayController");
-admin_route.get('/payment-gateway',auth.isLogin,PaymentGatewayController.loadPayment);
-admin_route.post('/payment-gateway',PaymentGatewayController.addPaymentMethod);
+admin_route.get('/payment-gateway', auth.isLogin, PaymentGatewayController.loadPayment);
+admin_route.post('/payment-gateway', PaymentGatewayController.addPaymentMethod);
 
 // Booking Controller and Routes
 const BookingController = require("../controllers/BookingController");
-admin_route.get('/booking',auth.isLogin,BookingController.loadBooking);
-admin_route.get('/edit-booking',auth.isLogin,BookingController.editBooking);
-admin_route.post('/edit-booking',upload.single('refunded_screenshot'),BookingController.updateBooking);
+admin_route.get('/booking', auth.isLogin, BookingController.loadBooking);
+admin_route.get('/edit-booking', auth.isLogin, BookingController.editBooking);
+admin_route.post('/edit-booking', upload.single('refunded_screenshot'), BookingController.updateBooking);
 
 admin_route.get('*', function (req, res) {
   res.redirect('/');
