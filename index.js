@@ -49,8 +49,8 @@ const adminRoute = require("./routes/adminRoutes");
 app.use('/', adminRoute);
 
 // Set API Routes
-// const apiRoute = require("./routes/apiRoutes");
-// app.use('/api', apiRoute);
+const apiRoute = require("./routes/apiRoutes");
+app.use('/api', apiRoute);
 
 const PORT = process.env.PORT || 3000;
 // Set Port and Start Server
