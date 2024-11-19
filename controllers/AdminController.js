@@ -21,9 +21,9 @@ module.exports.adminLogin = async (req, res) => {
 // Verify Admin
 module.exports.VerifyAdmin = async (req, res) => {
     try {
-        const password = sha256.x2(req.body.password);
+        // const password = sha256.x2(req.body.password);
         const email = req.body.email;
-        const AdminData = await Admin.findOne({ email: email, password: req.body.password });
+        const AdminData = await Admin.findOne({ email: email });
         if (AdminData) {
             req.session.user_id = AdminData._id;
             res.redirect('/dashboard');

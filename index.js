@@ -20,10 +20,10 @@ app.use(session({
     saveUninitialized: true,
     rolling: true,
     cookie: { maxAge: 24 * 60 * 60 * 1000 },
-    store: MongoStore.create({
-        mongoUrl: process.env.DB_CONNECTION,
-        ttl: 3600,
-    }),
+    // store: MongoStore.create({
+    //     mongoUrl: process.env.DB_CONNECTION,
+    //     ttl: 3600,
+    // }),
 }));
 
 // Store User in locals
@@ -52,7 +52,7 @@ app.use('/', adminRoute);
 const apiRoute = require("./routes/apiRoutes");
 app.use('/api', apiRoute);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 // Set Port and Start Server
 app.listen(PORT, function () {
     console.log(`Server is Running  on port ${PORT}`);
